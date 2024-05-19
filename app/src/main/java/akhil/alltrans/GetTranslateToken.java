@@ -106,7 +106,7 @@ class GetTranslateToken {
     private void doInBackground() {
 
         try {
-            if (PreferenceList.TranslatorProvider.equals("g")){
+            if (PreferenceList.TranslatorProvider.equals("g")) {
 
 
                 Uri uri = new Uri.Builder().scheme("content")
@@ -140,8 +140,7 @@ class GetTranslateToken {
                 getTranslate.onResponse(null, response);
 
                 cursor.close();
-            }
-            else if (PreferenceList.TranslatorProvider.equals("y")) {
+            } else if (PreferenceList.TranslatorProvider.equals("y")) {
                 String baseURL = "https://translate.yandex.net/api/v1.5/tr/translate?";
                 String keyURL = "key=" + PreferenceList.SubscriptionKey;
                 String textURL = "&text=" + URLEncoder.encode(getTranslate.stringToBeTrans, "UTF-8");
@@ -155,10 +154,34 @@ class GetTranslateToken {
 
                 utils.debugLog("In Thread " + Thread.currentThread().getId() + "  Enqueuing Request for new translation for : " + getTranslate.stringToBeTrans);
                 httpsClient.newCall(request).enqueue(getTranslate);
+            } else if (PreferenceList.TranslatorProvider.equals("d")) {
+                JSONObject jsonObject = new JSONObject();
+                JSONArray textArray = new JSONArray();
+                textArray.put(getTranslate.stringToBeTrans);
+                jsonObject.put("text", textArray);
+                jsonObject.put("target_lang", PreferenceList.TranslateToLanguage);
+
+                if (!PreferenceList.TranslateFromLanguage.equals("auto")) {
+                    jsonObject.put("source_lang", PreferenceList.TranslateFromLanguage);
+                }
+
+                RequestBody body = RequestBody.create(jsonObject.toString(), JSON_MEDIA_TYPE);
+
+                Request request = new Request.Builder()
+                        .url("https://api-free.deepl.com/v2/translate")
+                        .method("POST", body)
+                        .addHeader("Authorization", "DeepL-Auth-Key " + PreferenceList.SubscriptionKey)
+                        .addHeader("Content-Type", "application/json")
+                        .build();
+
+                utils.debugLog("In Thread " + Thread.currentThread().getId() + "  Enqueuing Request for new translation for : " + getTranslate.stringToBeTrans);
+                httpsClient.newCall(request).enqueue(getTranslate);
+            } else if (PreferenceList.TranslatorProvider.equals("p")) {
+
             } else {
                 String baseURL = "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0";
                 String languageURL = "&to=" + PreferenceList.TranslateToLanguage;
-                if (!PreferenceList.TranslateFromLanguage.equals("auto")){
+                if (!PreferenceList.TranslateFromLanguage.equals("auto")) {
                     languageURL += "&from=" + PreferenceList.TranslateFromLanguage;
                 }
                 String fullURL = baseURL + languageURL;

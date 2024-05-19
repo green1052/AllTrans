@@ -22,14 +22,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-        publish {
-            storeFile file(RELEASE_STORE_FILE)
-            storePassword RELEASE_STORE_PASSWORD
-            keyAlias RELEASE_KEY_ALIAS
-            keyPassword RELEASE_KEY_PASSWORD
-        }
-    }
+//    signingConfigs {
+//        publish {
+//            storeFile file(RELEASE_STORE_FILE)
+//            storePassword RELEASE_STORE_PASSWORD
+//            keyAlias RELEASE_KEY_ALIAS
+//            keyPassword RELEASE_KEY_PASSWORD
+//        }
+//    }
     compileSdk 33
 //    buildToolsVersion '32.0.0'
 
@@ -41,7 +41,7 @@ android {
         versionCode 196
         versionName "1.9.6"
         multiDexEnabled true
-        signingConfig signingConfigs.publish
+        //signingConfig signingConfigs.publish
     }
     buildTypes {
         debug {

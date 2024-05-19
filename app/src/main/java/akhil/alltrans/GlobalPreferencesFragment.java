@@ -103,6 +103,32 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
             translateToLanguage.setEntryValues(R.array.languageCodes);
             subscriptionKey.setTitle(getString(R.string.subKey_micro));
             subscriptionKey.setEnabled(true);
+        } else if (translatorProviderSelected.equals("d")) {
+            ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
+            ListPreference translateToLanguage = findPreference("TranslateToLanguage");
+            Preference subscriptionKey = findPreference("SubscriptionKey");
+            assert translateFromLanguage != null;
+            assert translateToLanguage != null;
+            assert subscriptionKey != null;
+            translateFromLanguage.setEntries(R.array.languageNamesDeepl);
+            translateFromLanguage.setEntryValues(R.array.languageCodesDeepL);
+            translateToLanguage.setEntries(R.array.languageNamesDeepl);
+            translateToLanguage.setEntryValues(R.array.languageCodesDeepL);
+            subscriptionKey.setTitle(getString(R.string.subKey_deepl));
+            subscriptionKey.setEnabled(true);
+        } else if (translatorProviderSelected.equals("p")) {
+            ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
+            ListPreference translateToLanguage = findPreference("TranslateToLanguage");
+            Preference subscriptionKey = findPreference("SubscriptionKey");
+            assert translateFromLanguage != null;
+            assert translateToLanguage != null;
+            assert subscriptionKey != null;
+            translateFromLanguage.setEntries(R.array.languageNames);
+            translateFromLanguage.setEntryValues(R.array.languageCodes);
+            translateToLanguage.setEntries(R.array.languageNames);
+            translateToLanguage.setEntryValues(R.array.languageCodes);
+            subscriptionKey.setTitle(getString(R.string.subKey_papago));
+            subscriptionKey.setEnabled(true);
         } else {
             ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
             ListPreference translateToLanguage = findPreference("TranslateToLanguage");

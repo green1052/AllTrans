@@ -28,12 +28,16 @@
         <item>g</item>
         <item>m</item>
         <item>y</item>
+        <item>d</item>
+        <item>p</item>
     </string-array>
 
     <string-array name="translatorProviderNames" translatable="false">
         <item>@string/translator_provider_google</item>
         <item>@string/translator_provider_microsoft</item>
         <item>@string/translator_provider_yandex</item>
+        <item>@string/translator_provider_deepl</item>
+        <item>@string/translator_provider_papago</item>
     </string-array>
 
     <string-array name="languageCodesGoogle" translatable="false">
@@ -494,4 +498,71 @@
         <item>@string/Chinese_yandex</item>
     </string-array>
 
+    <string-array name="languageCodesDeepL" translatable="false">
+        <item>auto</item>
+        <item>AR</item>
+        <item>BG</item>
+        <item>CS</item>
+        <item>DA</item>
+        <item>DE</item>
+        <item>EL</item>
+        <item>EN</item>
+        <item>ES</item>
+        <item>ET</item>
+        <item>FI</item>
+        <item>FR</item>
+        <item>HU</item>
+        <item>ID</item>
+        <item>IT</item>
+        <item>JA</item>
+        <item>KO</item>
+        <item>LT</item>
+        <item>LV</item>
+        <item>NB</item>
+        <item>NL</item>
+        <item>PL</item>
+        <item>PT</item>
+        <item>RO</item>
+        <item>RU</item>
+        <item>SK</item>
+        <item>SL</item>
+        <item>SV</item>
+        <item>TR</item>
+        <item>UK</item>
+        <item>ZH</item>
+    </string-array>
+
+    <string-array name="languageNamesDeepl" translatable="false">
+        <item>@string/Auto_detect_deepl</item>
+        <item>@string/Arabic_deepl</item>
+        <item>@string/Bulgarian_deepl</item>
+        <item>@string/Czech_deepl</item>
+        <item>@string/Danish_deepl</item>
+        <item>@string/German_deepl</item>
+        <item>@string/Greek_deepl</item>
+        <item>@string/English_deepl</item>
+        <item>@string/Spanish_deepl</item>
+        <item>@string/Estonian_deepl</item>
+        <item>@string/Finnish_deepl</item>
+        <item>@string/French_deepl</item>
+        <item>@string/Hungarian_deepl</item>
+        <item>@string/Indonesian_deepl</item>
+        <item>@string/Italian_deepl</item>
+        <item>@string/Japanese_deepl</item>
+        <item>@string/Korean_deepl</item>
+        <item>@string/Lithuanian_deepl</item>
+        <item>@string/Latvian_deepl</item>
+        <item>@string/Norwegian_Bokmal_deepl</item>
+        <item>@string/Dutch_deepl</item>
+        <item>@string/Polish_deepl</item>
+        <item>@string/Portuguese_deepl</item>
+        <item>@string/Romanian_deepl</item>
+        <item>@string/Russian_deepl</item>
+        <item>@string/Slovak_deepl</item>
+        <item>@string/Slovenian_deepl</item>
+        <item>@string/Swedish_deepl</item>
+        <item>@string/Turkish_deepl</item>
+        <item>@string/Ukrainian_deepl</item>
+        <item>@string/Chinese_deepl</item>
+    </string-array>
 </resources>

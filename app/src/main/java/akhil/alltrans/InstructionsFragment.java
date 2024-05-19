@@ -34,6 +34,7 @@ import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.multidex.BuildConfig;
 
 
 /**

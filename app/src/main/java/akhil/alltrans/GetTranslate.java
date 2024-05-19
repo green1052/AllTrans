@@ -24,6 +24,7 @@ import android.os.Looper;
 import android.util.Log;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -69,6 +70,10 @@ public class GetTranslate implements Callback {
                         translatedString = result.substring(result.indexOf("<text>") + 6, result.lastIndexOf("</text>"));
                     } else if (PreferenceList.TranslatorProvider.equals("m")) {
                         translatedString = new JSONArray(result).getJSONObject(0).getJSONArray("translations").getJSONObject(0).getString("text");
+                    } else if (PreferenceList.TranslatorProvider.equals("d")) {
+                        translatedString = new JSONObject(result).getJSONArray("translations").getJSONObject(0).getString("text");
+                    } else if (PreferenceList.TranslatorProvider.equals("p")) {
+
                     }
 //                    Ideally we don't need to do this, but Microsoft return these escape sequences sometimes..
                     translatedString = utils.XMLUnescape(translatedString);

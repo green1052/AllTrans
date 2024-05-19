@@ -65,63 +65,63 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final RatingDialog ratingDialog = new RatingDialog.Builder(this)
-                .threshold(4)
-                .session(6)
-                .title(getString(R.string.feedback_title))
-                .positiveButtonText(getString(R.string.feedback_positiveButtonText))
-                .negativeButtonText(getString(R.string.feedback_negativeButtonText))
-                .formTitle(getString(R.string.feedback_formTitle))
-                .formHint(getString(R.string.feedback_formHint))
-                .formSubmitText(getString(R.string.feedback_formSubmitText))
-                .formCancelText(getString(R.string.feedback_formCancelText))
-                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
-                    @Override
-                    public void onFormSubmitted(String feedback) {
-                        try {
-                            if (uniqueID == null) {
-                                SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(
-                                        "PREF_UNIQUE_ID", Context.MODE_PRIVATE);
-                                uniqueID = sharedPrefs.getString("PREF_UNIQUE_ID", null);
-                                if (uniqueID == null) {
-                                    uniqueID = UUID.randomUUID().toString();
-                                    SharedPreferences.Editor editor = sharedPrefs.edit();
-                                    editor.putString("PREF_UNIQUE_ID", uniqueID);
-                                    editor.apply();
-                                }
-                            }
+//        final RatingDialog ratingDialog = new RatingDialog.Builder(this)
+//                .threshold(4)
+//                .session(6)
+//                .title(getString(R.string.feedback_title))
+//                .positiveButtonText(getString(R.string.feedback_positiveButtonText))
+//                .negativeButtonText(getString(R.string.feedback_negativeButtonText))
+//                .formTitle(getString(R.string.feedback_formTitle))
+//                .formHint(getString(R.string.feedback_formHint))
+//                .formSubmitText(getString(R.string.feedback_formSubmitText))
+//                .formCancelText(getString(R.string.feedback_formCancelText))
+//                .onRatingBarFormSumbit(new RatingDialog.Builder.RatingDialogFormListener() {
+//                    @Override
+//                    public void onFormSubmitted(String feedback) {
+//                        try {
+//                            if (uniqueID == null) {
+//                                SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(
+//                                        "PREF_UNIQUE_ID", Context.MODE_PRIVATE);
+//                                uniqueID = sharedPrefs.getString("PREF_UNIQUE_ID", null);
+//                                if (uniqueID == null) {
+//                                    uniqueID = UUID.randomUUID().toString();
+//                                    SharedPreferences.Editor editor = sharedPrefs.edit();
+//                                    editor.putString("PREF_UNIQUE_ID", uniqueID);
+//                                    editor.apply();
+//                                }
+//                            }
+//
+//                            OkHttpClient client = new OkHttpClient().newBuilder().build();
+//                            MediaType mediaType = MediaType.parse("application/json");
+//                            Gson gson = new Gson();
+//                            Map<String, String> map = new HashMap<>();
+//                            map.put("body", uniqueID + " ---- " + feedback);
+//                            String resquestBody = gson.toJson(map);
+//
+//                            RequestBody body = RequestBody.create(resquestBody, mediaType);
+//                            Request request = new Request.Builder()
+//                                    .url("https://api.github.com/gists/fbe99628496b1d349347d3212c837d8d/comments")
+//                                    .method("POST", body)
+//                                    .addHeader("Authorization", "token "+getString(R.string.github_key))
+//                                    .addHeader("Content-Type", "application/json")
+//                                    .addHeader("accept", "*/*")
+//                                    .build();
+//                            client.newCall(request).enqueue(new Callback() {
+//                                @Override
+//                                public void onFailure(@NotNull Call call, @NotNull IOException e) {
+//                                }
+//                                @Override
+//                                public void onResponse(@NotNull Call call, @NotNull Response response) {
+//                                }
+//                            });
+//
+//                        } catch (Throwable ignored) {
+//                        }
+//
+//                    }
+//                }).build();
 
-                            OkHttpClient client = new OkHttpClient().newBuilder().build();
-                            MediaType mediaType = MediaType.parse("application/json");
-                            Gson gson = new Gson();
-                            Map<String, String> map = new HashMap<>();
-                            map.put("body", uniqueID + " ---- " + feedback);
-                            String resquestBody = gson.toJson(map);
-
-                            RequestBody body = RequestBody.create(resquestBody, mediaType);
-                            Request request = new Request.Builder()
-                                    .url("https://api.github.com/gists/fbe99628496b1d349347d3212c837d8d/comments")
-                                    .method("POST", body)
-                                    .addHeader("Authorization", "token "+getString(R.string.github_key))
-                                    .addHeader("Content-Type", "application/json")
-                                    .addHeader("accept", "*/*")
-                                    .build();
-                            client.newCall(request).enqueue(new Callback() {
-                                @Override
-                                public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                                }
-                                @Override
-                                public void onResponse(@NotNull Call call, @NotNull Response response) {
-                                }
-                            });
-
-                        } catch (Throwable ignored) {
-                        }
-
-                    }
-                }).build();
-
-        ratingDialog.show();
+        //ratingDialog.show();
 
         SharedPreferences settings = this.getSharedPreferences("AllTransPref", MODE_PRIVATE);
         utils.Debug = settings.getBoolean("Debug", false);

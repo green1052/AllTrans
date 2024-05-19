@@ -67,6 +67,8 @@
     <string name="translator_provider_google">"\nGoogle - This translation works offline, after initial download of around 30-60 MB. Translations are slow, makes apps \"lag\" or \"hang\" a bit. No need for any API key. Free.\n"</string>
     <string name="translator_provider_microsoft">"\nMicrosoft - Best translation, only works with Internet, requires a \"FREE\" API key. The process to get API keys is complicated, see Instructions.\n"</string>
     <string name="translator_provider_yandex">"\nYandex - Requires a \"PAID\" api key. If you already have a free API key, it may work, it may not. Not recommended.\n "</string>
+    <string name="translator_provider_deepl" translatable="false">DeepL - test</string>
+    <string name="translator_provider_papago" translatable="false">Papago - test</string>
 
     <string name="ask_download">"We need to download the translation files if not previously downloaded, around 30 MB. Translation will not work without downloading. Download now?"</string>
     <string name="download_now">"Download now"</string>
@@ -80,6 +82,9 @@
     <string name="subKey">"Microsoft / Yandex Subscription Key"</string>
     <string name="subKey_micro">"Microsoft Subscription Key"</string>
     <string name="subKey_yandex">"Yandex Subscription Key"</string>
+    <string name="subKey_deepl" translatable="false">"DeepL Subscription Key"</string>
+    <string name="subKey_papago" translatable="false">"Papago Subscription Key"</string>
+
     <string name="subKey_summary">"Enter the Subscription Key for Microsoft Azure or Yandex Translation API, whichever is enabled above"</string>
     <string name="subKey_defaultValue">"Enter Your Microsoft or Yandex Subscription Key"</string>
 
@@ -392,4 +397,37 @@
     <string name="Cantonese_Traditional_micro">"Cantonese (Traditional)"</string>
     <string name="Chinese_Simplified_micro">"Chinese Simplified"</string>
     <string name="Chinese_Traditional_micro">"Chinese Traditional"</string>
+
+    <!-- DeepL Language Names -->
+    <string name="Auto_detect_deepl" translatable="false">"Auto-detect language"</string>
+    <string name="Arabic_deepl" translatable="false">Arabic</string>
+    <string name="Bulgarian_deepl" translatable="false">Bulgarian</string>
+    <string name="Czech_deepl" translatable="false">Czech</string>
+    <string name="Danish_deepl" translatable="false">Danish</string>
+    <string name="German_deepl" translatable="false">German</string>
+    <string name="Greek_deepl" translatable="false">Greek</string>
+    <string name="English_deepl" translatable="false">English</string>
+    <string name="Spanish_deepl" translatable="false">Spanish</string>
+    <string name="Estonian_deepl" translatable="false">Estonian</string>
+    <string name="Finnish_deepl" translatable="false">Finnish</string>
+    <string name="French_deepl" translatable="false">French</string>
+    <string name="Hungarian_deepl" translatable="false">Hungarian</string>
+    <string name="Indonesian_deepl" translatable="false">Indonesian</string>
+    <string name="Italian_deepl" translatable="false">Italian</string>
+    <string name="Japanese_deepl" translatable="false">Japanese</string>
+    <string name="Korean_deepl" translatable="false">Korean</string>
+    <string name="Lithuanian_deepl" translatable="false">Lithuanian</string>
+    <string name="Latvian_deepl" translatable="false">Latvian</string>
+    <string name="Norwegian_Bokmal_deepl" translatable="false">Norwegian Bokmål</string>
+    <string name="Dutch_deepl" translatable="false">Dutch</string>
+    <string name="Polish_deepl" translatable="false">Polish</string>
+    <string name="Portuguese_deepl" translatable="false">Portuguese (all Portuguese varieties mixed)</string>
+    <string name="Romanian_deepl" translatable="false">Romanian</string>
+    <string name="Russian_deepl" translatable="false">Russian</string>
+    <string name="Slovak_deepl" translatable="false">Slovak</string>
+    <string name="Slovenian_deepl" translatable="false">Slovenian</string>
+    <string name="Swedish_deepl" translatable="false">Swedish</string>
+    <string name="Turkish_deepl" translatable="false">Turkish</string>
+    <string name="Ukrainian_deepl" translatable="false">Ukrainian</string>
+    <string name="Chinese_deepl" translatable="false">Chinese</string>
 </resources>
