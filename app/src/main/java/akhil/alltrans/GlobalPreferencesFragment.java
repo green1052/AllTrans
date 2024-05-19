@@ -23,22 +23,9 @@ import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import java.text.Collator;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.mlkit.nl.translate.TranslateLanguage;
-import com.google.mlkit.nl.translate.Translation;
-import com.google.mlkit.nl.translate.Translator;
-import com.google.mlkit.nl.translate.TranslatorOptions;
-
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -47,6 +34,19 @@ import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
+
+import java.text.Collator;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 
 public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
@@ -57,15 +57,15 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         SharedPreferences sharedPreferences = getPreferenceManager().getSharedPreferences();
         assert translatorProvider != null;
         boolean isNew = true;
-        if (sharedPreferences.contains("EnableYandex")){
+        if (sharedPreferences.contains("EnableYandex")) {
             String subscriptionKey1 = sharedPreferences.getString("SubscriptionKey", "Enter");
             if (subscriptionKey1 != null && !subscriptionKey1.startsWith("Enter") && !subscriptionKey1.equals(getString(R.string.subKey_defaultValue))) {
                 isNew = false;
             }
         }
 
-        if (!isNew){
-            if (sharedPreferences.getBoolean("EnableYandex", false)){
+        if (!isNew) {
+            if (sharedPreferences.getBoolean("EnableYandex", false)) {
                 translatorProvider.setValueIndex(2);
             } else {
                 translatorProvider.setValueIndex(1);
@@ -76,7 +76,7 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         }
     }
 
-    private void handleProviderChange(String translatorProviderSelected){
+    private void handleProviderChange(String translatorProviderSelected) {
         if (translatorProviderSelected.equals("y")) {
             ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
             ListPreference translateToLanguage = findPreference("TranslateToLanguage");
@@ -90,7 +90,7 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
             translateToLanguage.setEntryValues(R.array.languageCodesYandex);
             subscriptionKey.setTitle(getString(R.string.subKey_yandex));
             subscriptionKey.setEnabled(true);
-        } else if (translatorProviderSelected.equals("m")){
+        } else if (translatorProviderSelected.equals("m")) {
             ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
             ListPreference translateToLanguage = findPreference("TranslateToLanguage");
             Preference subscriptionKey = findPreference("SubscriptionKey");
@@ -161,7 +161,7 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         CharSequence[] sortedValues = new CharSequence[size];
         Iterator<Map.Entry<CharSequence, CharSequence>> entryIterator = sorter.entrySet().iterator();
         if (entryIterator.hasNext()) {
-            for (int i = 0; i < size ; i++) {
+            for (int i = 0; i < size; i++) {
                 Map.Entry<CharSequence, CharSequence> entry = entryIterator.next();
                 sortedLabels[i] = entry.getKey();
                 sortedValues[i] = entry.getValue();
@@ -171,7 +171,7 @@ public class GlobalPreferencesFragment extends PreferenceFragmentCompat {
         preference.setEntryValues(sortedValues);
     }
 
-    private void downloadModel(String translateLanguageSelected, boolean isFromLanguage){
+    private void downloadModel(String translateLanguageSelected, boolean isFromLanguage) {
         ListPreference translatorProvider1 = findPreference("TranslatorProvider");
         assert translatorProvider1 != null;
         String translatorProviderSelected1 = translatorProvider1.getValue();

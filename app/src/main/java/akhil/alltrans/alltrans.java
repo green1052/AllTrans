@@ -20,6 +20,8 @@
 package akhil.alltrans;
 
 
+import static de.robv.android.xposed.XposedHelpers.findClass;
+
 import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
@@ -38,8 +40,6 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
-
-import static de.robv.android.xposed.XposedHelpers.findClass;
 
 
 public class alltrans implements IXposedHookLoadPackage {
@@ -74,7 +74,7 @@ public class alltrans implements IXposedHookLoadPackage {
 
         try {
             baseRecordingCanvas = findClass("android.graphics.BaseRecordingCanvas", lpparam.classLoader);
-        } catch (Throwable e){
+        } catch (Throwable e) {
             XposedBridge.log("Cannot find baseRecordingCanvas");
         }
 
@@ -104,7 +104,7 @@ public class alltrans implements IXposedHookLoadPackage {
                 XposedBridge.log("beforeHookedMethod mQuery Settings: ");
                 try {
                     Uri uri = (Uri) param.args[0];
-                    if (uri.toString().contains("alltransProxyProviderURI")){
+                    if (uri.toString().contains("alltransProxyProviderURI")) {
 
                         XposedBridge.log("AllTrans: got projection xlua ");
                         long ident = Binder.clearCallingIdentity();
@@ -119,7 +119,7 @@ public class alltrans implements IXposedHookLoadPackage {
                             String new_uri_string = uri.toString().replace("content://settings/system/alltransProxyProviderURI/", "content://akhil.alltrans.");
                             Uri new_uri = Uri.parse(new_uri_string);
                             XposedBridge.log("AllTrans: New URI " + new_uri.toString());
-                            
+
                             Cursor cursor = context.getContentResolver().query(new_uri, null, null, null, null);
                             param.setResult(cursor);
 

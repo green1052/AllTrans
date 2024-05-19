@@ -36,8 +36,12 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.analytics.FirebaseAnalytics;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,11 +53,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 @SuppressWarnings("ALL")
 public class AppListFragment extends Fragment {
@@ -262,12 +261,12 @@ public class AppListFragment extends Fragment {
             final PackageManager pm = context.getPackageManager();
             //get a list of installed apps.
             final List<ApplicationInfo> packages = getInstalledApplications(context);
-            if (utils.isExpModuleActive(getContext())){
+            if (utils.isExpModuleActive(getContext())) {
                 List<String> packagNames = utils.getExpApps(getContext());
                 utils.debugLog(packagNames + "");
                 ListIterator<ApplicationInfo> iter = packages.listIterator();
-                while(iter.hasNext()){
-                    if(!packagNames.contains(iter.next().packageName)){
+                while (iter.hasNext()) {
+                    if (!packagNames.contains(iter.next().packageName)) {
                         iter.remove();
                     }
                 }

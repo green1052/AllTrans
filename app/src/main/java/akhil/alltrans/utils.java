@@ -19,6 +19,8 @@
 
 package akhil.alltrans;
 
+import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
+
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -30,8 +32,6 @@ import java.io.StringWriter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
-
-import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
 
 class utils {
     public static boolean Debug = true;
@@ -101,18 +101,18 @@ class utils {
         }
     }
 
-    public static void tryHookMethod(Class<?> clazz, String methodName, Object... parameterTypesAndCallback){
-        try{
+    public static void tryHookMethod(Class<?> clazz, String methodName, Object... parameterTypesAndCallback) {
+        try {
             findAndHookMethod(clazz, methodName, parameterTypesAndCallback);
-        } catch (Throwable e){
+        } catch (Throwable e) {
             utils.debugLog("Cannot hook method - " + clazz.getCanonicalName() + " - " + methodName + Log.getStackTraceString(e));
         }
     }
 
-    public static void tryHookMethod(String className, ClassLoader classLoader, String methodName, Object... parameterTypesAndCallback){
-        try{
+    public static void tryHookMethod(String className, ClassLoader classLoader, String methodName, Object... parameterTypesAndCallback) {
+        try {
             findAndHookMethod(className, classLoader, methodName, parameterTypesAndCallback);
-        } catch (Throwable e){
+        } catch (Throwable e) {
             utils.debugLog("Cannot hook method - " + className + " - " + methodName + Log.getStackTraceString(e));
         }
     }

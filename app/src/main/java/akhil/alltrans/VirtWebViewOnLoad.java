@@ -19,6 +19,8 @@
 
 package akhil.alltrans;
 
+import static android.content.Context.MODE_APPEND;
+
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,8 +30,6 @@ import android.webkit.WebView;
 
 import java.io.FileOutputStream;
 
-import static android.content.Context.MODE_APPEND;
-
 public class VirtWebViewOnLoad implements OriginalCallable {
 
     public void callOriginalMethod(final CharSequence translatedString, final Object userData) {
@@ -37,7 +37,7 @@ public class VirtWebViewOnLoad implements OriginalCallable {
         WebView webView = webHookUserData2.webView;
         final String originalString = utils.javaScriptEscape(webHookUserData2.stringArgs);
         final String newString = utils.javaScriptEscape(translatedString.toString());
-        if (newString == null || newString.equals(originalString)){
+        if (newString == null || newString.equals(originalString)) {
             return;
         }
         utils.debugLog("In callOriginalMethod webView. Trying to replace -" + originalString + "-with-" + newString);
@@ -238,7 +238,7 @@ public class VirtWebViewOnLoad implements OriginalCallable {
     @SuppressWarnings("unused")
     @JavascriptInterface
     public void showLog(final String stringArgs, WebView webView) {
-        if (stringArgs == null){
+        if (stringArgs == null) {
             return;
         }
         utils.debugLog("in WebView Showlog " + stringArgs);

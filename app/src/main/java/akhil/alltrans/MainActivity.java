@@ -24,35 +24,19 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
-import com.codemybrainsout.ratingdialog.RatingDialog;
-import com.google.android.material.tabs.TabLayout;
-import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.gson.Gson;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentActivity;
 import androidx.multidex.MultiDex;
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 
 public class MainActivity extends FragmentActivity implements View.OnClickListener {
+    private static String uniqueID = null;
     //public static String TAG = "alltrans";
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private FirebaseAnalytics mFirebaseAnalytics;
-    private static String uniqueID = null;
 
     @Override
     protected void attachBaseContext(Context base) {

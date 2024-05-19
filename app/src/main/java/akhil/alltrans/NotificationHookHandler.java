@@ -19,6 +19,8 @@
 
 package akhil.alltrans;
 
+import static akhil.alltrans.SetTextHookHandler.isNotWhiteSpace;
+
 import android.app.Notification;
 import android.app.Notification.MessagingStyle.Message;
 import android.app.Person;
@@ -27,41 +29,20 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.util.Log;
 
+import androidx.annotation.RequiresApi;
+
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-import androidx.annotation.RequiresApi;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
 
-import static akhil.alltrans.SetTextHookHandler.isNotWhiteSpace;
-
 
 public class NotificationHookHandler extends XC_MethodReplacement implements OriginalCallable {
-
-    public void callOriginalMethod(CharSequence translatedString, Object userData) {
-        NotificationHookUserData notificationHookUserData = (NotificationHookUserData) userData;
-        MethodHookParam methodHookParam = notificationHookUserData.methodHookParam;
-        String originalString = notificationHookUserData.originalString;
-        Method myMethod = (Method) methodHookParam.method;
-        myMethod.setAccessible(true);
-        Object[] myArgs = methodHookParam.args;
-        Notification notification = (Notification) methodHookParam.args[methodHookParam.args.length - 1];
-
-        if (translatedString != null) {
-            changeText(notification, originalString, translatedString.toString());
-        }
-        try {
-            utils.debugLog("In Thread " + Thread.currentThread().getId() + " Invoking original function " + methodHookParam.method.getName());
-            XposedBridge.invokeOriginalMethod(myMethod, methodHookParam.thisObject, myArgs);
-        } catch (Throwable e) {
-            Log.e("AllTrans", "AllTrans: Got error in invoking method as : " + Log.getStackTraceString(e));
-        }
-    }
 
     public static Parcelable[] getMessagesFromBundleArray2(Parcelable[] bundles, String originalString, String translatedString) {
         if (bundles == null) {
@@ -91,6 +72,26 @@ public class NotificationHookHandler extends XC_MethodReplacement implements Ori
             bundles[i] = bundle;
         }
         return bundles;
+    }
+
+    public void callOriginalMethod(CharSequence translatedString, Object userData) {
+        NotificationHookUserData notificationHookUserData = (NotificationHookUserData) userData;
+        MethodHookParam methodHookParam = notificationHookUserData.methodHookParam;
+        String originalString = notificationHookUserData.originalString;
+        Method myMethod = (Method) methodHookParam.method;
+        myMethod.setAccessible(true);
+        Object[] myArgs = methodHookParam.args;
+        Notification notification = (Notification) methodHookParam.args[methodHookParam.args.length - 1];
+
+        if (translatedString != null) {
+            changeText(notification, originalString, translatedString.toString());
+        }
+        try {
+            utils.debugLog("In Thread " + Thread.currentThread().getId() + " Invoking original function " + methodHookParam.method.getName());
+            XposedBridge.invokeOriginalMethod(myMethod, methodHookParam.thisObject, myArgs);
+        } catch (Throwable e) {
+            Log.e("AllTrans", "AllTrans: Got error in invoking method as : " + Log.getStackTraceString(e));
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

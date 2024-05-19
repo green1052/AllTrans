@@ -26,6 +26,9 @@ import android.database.MatrixCursor;
 import android.net.Uri;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.mlkit.nl.translate.Translation;
@@ -35,9 +38,6 @@ import com.google.mlkit.nl.translate.TranslatorOptions;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 public class gtransProvider extends ContentProvider {
     private Map<String, Translator> translatorClients;
@@ -57,7 +57,7 @@ public class gtransProvider extends ContentProvider {
         String hashKey = fromLanguage + "##" + toLanguage;
         String tobeTrans = uri.getQueryParameter("text");
         Translator translator;
-        if (translatorClients.containsKey(hashKey)){
+        if (translatorClients.containsKey(hashKey)) {
             translator = translatorClients.get(hashKey);
         } else {
             assert fromLanguage != null;

@@ -19,6 +19,8 @@
 
 package akhil.alltrans;
 
+import static de.robv.android.xposed.XposedHelpers.callMethod;
+
 import android.annotation.SuppressLint;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,8 +41,6 @@ import java.nio.CharBuffer;
 
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
-
-import static de.robv.android.xposed.XposedHelpers.callMethod;
 
 
 public class SetTextHookHandler extends XC_MethodReplacement implements OriginalCallable {

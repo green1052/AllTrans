@@ -29,12 +29,12 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.Arrays;
-import java.util.Locale;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.multidex.BuildConfig;
+
+import java.util.Arrays;
+import java.util.Locale;
 
 
 /**

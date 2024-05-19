@@ -28,6 +28,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.preference.ListPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
+import androidx.preference.PreferenceManager;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.mlkit.nl.translate.TranslateLanguage;
@@ -41,19 +48,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.preference.ListPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceFragmentCompat;
-import androidx.preference.PreferenceManager;
-
 
 public class LocalPreferenceFragment extends PreferenceFragmentCompat {
     public ApplicationInfo applicationInfo;
     private SharedPreferences settings;
 
-    private void handleProviderChange(String translatorProviderSelected){
+    private void handleProviderChange(String translatorProviderSelected) {
         if (translatorProviderSelected.equals("y")) {
             ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
             ListPreference translateToLanguage = findPreference("TranslateToLanguage");
@@ -63,7 +63,7 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
             translateFromLanguage.setEntryValues(R.array.languageCodesYandex);
             translateToLanguage.setEntries(R.array.languageNamesYandex);
             translateToLanguage.setEntryValues(R.array.languageCodesYandex);
-        } else if (translatorProviderSelected.equals("m")){
+        } else if (translatorProviderSelected.equals("m")) {
             ListPreference translateFromLanguage = findPreference("TranslateFromLanguage");
             ListPreference translateToLanguage = findPreference("TranslateToLanguage");
             assert translateFromLanguage != null;
@@ -101,7 +101,7 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
         CharSequence[] sortedValues = new CharSequence[size];
         Iterator<Map.Entry<CharSequence, CharSequence>> entryIterator = sorter.entrySet().iterator();
         if (entryIterator.hasNext()) {
-            for (int i = 0; i < size ; i++) {
+            for (int i = 0; i < size; i++) {
                 Map.Entry<CharSequence, CharSequence> entry = entryIterator.next();
                 sortedLabels[i] = entry.getKey();
                 sortedValues[i] = entry.getValue();
@@ -111,7 +111,7 @@ public class LocalPreferenceFragment extends PreferenceFragmentCompat {
         preference.setEntryValues(sortedValues);
     }
 
-    private void downloadModel(String translateLanguageSelected, boolean isFromLanguage){
+    private void downloadModel(String translateLanguageSelected, boolean isFromLanguage) {
 
         settings = getContext().getSharedPreferences("AllTransPref", Context.MODE_PRIVATE);
         String translatorProvider = settings.getString("TranslatorProvider", "g");

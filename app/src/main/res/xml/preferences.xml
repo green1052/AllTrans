@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright 2017 Akhil Kedia
   ~ This file is part of AllTrans.
   ~
@@ -22,135 +21,141 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreference
-        app:iconSpaceReserved="false"
         android:defaultValue="true"
         android:key="Enabled"
         android:summary="@string/master_on_off_summary"
         android:summaryOff="@string/master_on_off_summary_off"
         android:summaryOn="@string/master_on_off_summary_on"
+        app:iconSpaceReserved="false"
         app:title="@string/master_on_off" />
 
-    <PreferenceCategory android:title="@string/pref_cat_translate_settings" app:iconSpaceReserved="false">
+    <PreferenceCategory
+        android:title="@string/pref_cat_translate_settings"
+        app:iconSpaceReserved="false">
 
         <ListPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="g"
             android:entries="@array/translatorProviderNames"
             android:entryValues="@array/translatorProviderCodes"
             android:key="TranslatorProvider"
             android:summary="@string/translator_provider_summary"
-            android:title="@string/translator_provider" />
+            android:title="@string/translator_provider"
+            app:iconSpaceReserved="false" />
 
         <EditTextPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="@string/subKey_defaultValue"
             android:key="SubscriptionKey"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:summary="@string/subKey_summary"
-            android:title="@string/subKey" />
+            android:title="@string/subKey"
+            app:iconSpaceReserved="false" />
         <ListPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="ko"
             android:entries="@array/languageNames"
             android:entryValues="@array/languageCodes"
             android:key="TranslateFromLanguage"
             android:summary="@string/transFrom_summary"
-            android:title="@string/transFrom" />
+            android:title="@string/transFrom"
+            app:iconSpaceReserved="false" />
         <ListPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="en"
             android:entries="@array/languageNames"
             android:entryValues="@array/languageCodes"
             android:key="TranslateToLanguage"
             android:summary="@string/transTo_summary"
-            android:title="@string/transTo" />
+            android:title="@string/transTo"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_cat_troubleshooting_info" app:iconSpaceReserved="false">
+    <PreferenceCategory
+        android:title="@string/pref_cat_troubleshooting_info"
+        app:iconSpaceReserved="false">
 
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="DrawText"
             android:summaryOff="@string/drawText_summary_off"
             android:summaryOn="@string/drawText_summary_on"
-            android:title="@string/drawText"/>
+            android:title="@string/drawText"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Scroll"
             android:summaryOff="@string/scroll_summary_off"
             android:summaryOn="@string/scroll_summary_on"
-            android:title="@string/scroll" />
+            android:title="@string/scroll"
+            app:iconSpaceReserved="false" />
         <EditTextPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="@integer/default_delay"
             android:key="Delay"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:summary="@string/delay_summary"
-            android:title="@string/delay" />
+            android:title="@string/delay"
+            app:iconSpaceReserved="false" />
         <EditTextPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="@integer/default_delay_webview"
             android:key="DelayWebView"
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:summary="@string/delay_webview_summary"
-            android:title="@string/delay_webview" />
+            android:title="@string/delay_webview"
+            app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/pref_cat_advanced_settings" app:iconSpaceReserved="false">
+    <PreferenceCategory
+        android:title="@string/pref_cat_advanced_settings"
+        app:iconSpaceReserved="false">
 
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetText"
             android:summaryOff="@string/setText_summary_off"
             android:summaryOn="@string/setText_summary_on"
-            android:title="@string/setText" />
+            android:title="@string/setText"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="SetHint"
             android:summaryOff="@string/setHint_summary_off"
             android:summaryOn="@string/setHint_summary_on"
-            android:title="@string/setHint" />
+            android:title="@string/setHint"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="LoadURL"
             android:summaryOff="@string/webView_summary_off"
             android:summaryOn="@string/webView_summary_on"
-            android:title="@string/webView" />
+            android:title="@string/webView"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Notif"
             android:summaryOff="@string/notif_summary_off"
             android:summaryOn="@string/notif_summary_on"
-            android:title="@string/notif" />
+            android:title="@string/notif"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Cache"
             android:summaryOff="@string/caching_summary_off"
             android:summaryOn="@string/caching_summary_on"
-            android:title="@string/caching" />
+            android:title="@string/caching"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="true"
             android:key="Anon"
             android:summaryOff="@string/analytics_summary_off"
             android:summaryOn="@string/analytics_summary_on"
-            android:title="@string/analytics" />
+            android:title="@string/analytics"
+            app:iconSpaceReserved="false" />
         <SwitchPreference
-            app:iconSpaceReserved="false"
             android:defaultValue="false"
             android:key="Debug"
             android:summaryOff="@string/debug_summary_off"
             android:summaryOn="@string/debug_summary_on"
-            android:title="@string/debug" />
+            android:title="@string/debug"
+            app:iconSpaceReserved="false" />
     </PreferenceCategory>
 </PreferenceScreen>

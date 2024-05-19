@@ -24,10 +24,10 @@ import android.app.Application;
 import android.os.Bundle;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-
-import androidx.annotation.NonNull;
 
 class MyActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 

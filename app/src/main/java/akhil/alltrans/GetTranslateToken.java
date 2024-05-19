@@ -46,10 +46,10 @@ import okhttp3.ResponseBody;
 //class GetTranslateToken implements Callback {
 class GetTranslateToken {
     private static final Semaphore available = new Semaphore(1, true);
+    private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     //    private static String userCredentials;
 //    private static long lastExpireTime = 0;
     private static OkHttpClient httpsClient;
-    private static final MediaType JSON_MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
     public GetTranslate getTranslate;
 
     private static Cache createHttpsClientCache() {

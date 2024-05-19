@@ -19,6 +19,9 @@
 
 package akhil.alltrans;
 
+import static de.robv.android.xposed.XposedBridge.hookAllMethods;
+import static de.robv.android.xposed.XposedHelpers.findAndHookConstructor;
+
 import android.app.NotificationManager;
 import android.content.Context;
 import android.database.Cursor;
@@ -43,36 +46,9 @@ import java.util.Map;
 
 import de.robv.android.xposed.XC_MethodHook;
 
-import static de.robv.android.xposed.XposedBridge.hookAllMethods;
-import static de.robv.android.xposed.XposedHelpers.findAndHookConstructor;
-
 class AttachBaseContextHookHandler extends XC_MethodHook {
 
-    @Override
-    protected void beforeHookedMethod(MethodHookParam methodHookParam) {
-        try {
-            Context context = (Context) methodHookParam.args[0];
-            String packageName = context.getPackageName();
-            utils.debugLog("AllTrans: in attachBaseContext of ContextWrapper for package " + packageName);
-            if (context.getApplicationContext() == null) {
-                utils.debugLog("AllTrans: returning because null context for package " + packageName);
-                return;
-            }
-//        TODO: Verify using this context is fine.
-            if (alltrans.context != null) {
-                utils.debugLog("AllTrans: returning because context already not null for package " + packageName);
-                return;
-            }
-
-            Context applicationContext = ((Context) methodHookParam.args[0]).getApplicationContext();
-            readPrefAndHook(applicationContext);
-        } catch (Throwable e){
-            utils.debugLog("Caught Exception in attachBaseContext " + Log.getStackTraceString(e));
-        }
-
-    }
-
-    public static void readPrefAndHook(Context context){
+    public static void readPrefAndHook(Context context) {
         String packageName = context.getPackageName();
         alltrans.context = context;
         utils.debugLog("Successfully got context for package " + packageName);
@@ -222,6 +198,30 @@ class AttachBaseContextHookHandler extends XC_MethodHook {
         }
 
         alltrans.cacheAccess.release();
+    }
+
+    @Override
+    protected void beforeHookedMethod(MethodHookParam methodHookParam) {
+        try {
+            Context context = (Context) methodHookParam.args[0];
+            String packageName = context.getPackageName();
+            utils.debugLog("AllTrans: in attachBaseContext of ContextWrapper for package " + packageName);
+            if (context.getApplicationContext() == null) {
+                utils.debugLog("AllTrans: returning because null context for package " + packageName);
+                return;
+            }
+//        TODO: Verify using this context is fine.
+            if (alltrans.context != null) {
+                utils.debugLog("AllTrans: returning because context already not null for package " + packageName);
+                return;
+            }
+
+            Context applicationContext = ((Context) methodHookParam.args[0]).getApplicationContext();
+            readPrefAndHook(applicationContext);
+        } catch (Throwable e) {
+            utils.debugLog("Caught Exception in attachBaseContext " + Log.getStackTraceString(e));
+        }
+
     }
 
 }

@@ -19,6 +19,9 @@
 
 package akhil.alltrans;
 
+import static de.robv.android.xposed.XposedBridge.hookMethod;
+import static de.robv.android.xposed.XposedBridge.unhookMethod;
+
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
@@ -37,9 +40,6 @@ import java.nio.CharBuffer;
 import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XposedBridge;
 
-import static de.robv.android.xposed.XposedBridge.hookMethod;
-import static de.robv.android.xposed.XposedBridge.unhookMethod;
-
 public class DrawTextHookHandler extends XC_MethodReplacement implements OriginalCallable {
 
     /**
@@ -56,7 +56,7 @@ public class DrawTextHookHandler extends XC_MethodReplacement implements Origina
         float desiredTextSize = originalSize;
         Rect bounds = new Rect();
         paint.getTextBounds(text, 0, text.length(), bounds);
-        while(bounds.width() > desiredWidth) {
+        while (bounds.width() > desiredWidth) {
             desiredTextSize -= 1;
             paint.setTextSize(desiredTextSize);
             paint.getTextBounds(text, 0, text.length(), bounds);
@@ -79,7 +79,7 @@ public class DrawTextHookHandler extends XC_MethodReplacement implements Origina
         myMethod.setAccessible(true);
         Object[] myArgs = methodHookParam.args;
 
-        if (myArgs.length != 0 && myArgs[0]!= null) {
+        if (myArgs.length != 0 && myArgs[0] != null) {
             if (myArgs[0].getClass().equals(char[].class)) {
                 myArgs[0] = translatedString.toString().toCharArray();
             } else if (myArgs[0].getClass().equals(AlteredCharSequence.class)) {
@@ -109,10 +109,10 @@ public class DrawTextHookHandler extends XC_MethodReplacement implements Origina
 
         Paint tempPaint = (Paint) myArgs[myArgs.length - 1];
         Canvas tempCanvas = (Canvas) methodHookParam.thisObject;
-        if (myArgs[0]!= null) {
+        if (myArgs[0] != null) {
             myArgs[myArgs.length - 1] = copyPaint(tempPaint, tempCanvas, myArgs[0].toString());
         }
-        if (myArgs[1].getClass().equals(int.class) || myArgs[1].getClass().equals(Integer.class) ) {
+        if (myArgs[1].getClass().equals(int.class) || myArgs[1].getClass().equals(Integer.class)) {
             myArgs[1] = 0;
             myArgs[2] = 0;
             if (translatedString != null) {

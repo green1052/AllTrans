@@ -36,7 +36,7 @@ class appOnCreateHookHandler extends XC_MethodHook {
                 return;
             }
             AttachBaseContextHookHandler.readPrefAndHook(application);
-        } catch (Throwable e){
+        } catch (Throwable e) {
             utils.debugLog("Caught Exception in appOnCreateHookHandler " + Log.getStackTraceString(e));
         }
 

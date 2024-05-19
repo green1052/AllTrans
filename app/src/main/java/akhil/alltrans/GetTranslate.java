@@ -23,12 +23,13 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
 
-import androidx.annotation.NonNull;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

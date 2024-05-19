@@ -27,10 +27,10 @@ import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.net.Uri;
 
-import com.google.gson.Gson;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.google.gson.Gson;
 
 public class sharedPrefProvider extends ContentProvider {
 
